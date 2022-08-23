@@ -1,0 +1,57 @@
+@use '../util' as *;
+//https://codepen.io/SaraSoueidan/pen/jpBbrq/ 1:07:07 in Video 3
+.toggle {
+    display: grid;
+    grid-template-columns: 1fr rem(48);
+    gap: rem(4.8) rem(8);
+    border: none;
+    margin: 0;
+    legend {
+        font-size: rem(14);
+        font-weight: 700;
+        grid-column: 1 / 2;
+        float: left;
+        align-self: center;
+        color: var(--toggle-txt-color);
+    }
+    &__wrapper {
+        position: relative;
+        grid-column: 2 / 3;
+        height: rem(24);
+    }
+    input[type="radio"] {
+        margin: 0 rem(-2) 0 rem(-2);
+        opacity: 0; //allows to be tab-able,'display: none' doesn't allow toggle to be tabbed for accessibility.
+        width: rem(24);
+        height: rem(24);
+        // &:focus~.toggle__button {
+        //     border: rem(2) solid white;
+        // }// <- was for a visual during testing.
+        cursor: pointer;
+    }
+    &__background {
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        border-radius: rem(12);
+        background: var(--toggle-bkgrnd);
+        pointer-events: none;
+    }
+    &__button {
+        position: absolute;
+        left: rem(3);
+        top: rem(3);
+        right: 100%;
+        width: rem(18);
+        height: rem(18);
+        border-radius: 50%;
+        background-color: var(--toggle-btn);
+        transition: all 150ms ease-in-out;
+    }
+    #light:checked~.toggle__button {
+        left: calc(100% - 26px);
+        right: 3px;
+    }
+}
